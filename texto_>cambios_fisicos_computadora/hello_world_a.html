@@ -1,0 +1,22 @@
+<html>
+<head>
+    <style>
+    body {
+      height: 500px;
+    }
+  </style>
+</head>
+<body >
+    <p>buenas</p>
+    <script>
+        function createElem(){
+           console.log("hola")
+            let h1Elem = document.createElement("h1");
+            let text = document.createTextNode("Hola!");
+            h1Elem.appendChild(text);
+            document.body.appendChild(h1Elem);
+        }
+        document.body.addEventListener("click",createElem);
+    </script>
+</body>
+</html>

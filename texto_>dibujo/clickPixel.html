@@ -1,0 +1,36 @@
+<canvas id='canvas' width=500px height=500px></canvas>
+<script>
+  let clicks = 0;
+  let desc = false;
+  var canvas = document.getElementById('canvas')
+  var ctx = canvas.getContext('2d');
+  for (var i = 0; i < 6 + clicks; i++) {
+    for (var j = 0; j < 6 + clicks; j++) {
+      ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ', ' +
+        Math.floor(255 - 42.5 * j) + ', 0)';
+      ctx.fillRect(j * 25, i * 25, 25, 25);
+    }
+  }
+  canvas.addEventListener('click', function(event) {
+    console.log("clicked ", clicks)
+    if (desc) {
+      clicks -= 1;
+      if (clicks < 0) {
+        desc = false;
+      }
+    } else {
+      clicks += 1;
+      if (clicks >= 10) {
+        desc = true;
+      }
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < 6 + clicks; i++) {
+      for (var j = 0; j < 6 + clicks; j++) {
+        ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ', ' +
+          Math.floor(255 - 42.5 * j) + ', 0)';
+        ctx.fillRect(j * 25, i * 25, 25, 25);
+      }
+    }
+  });
+</script>

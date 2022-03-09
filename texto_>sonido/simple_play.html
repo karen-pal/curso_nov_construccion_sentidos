@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.37/Tone.js" integrity="sha512-gK8OnTXn8cTYkHqYX+bhzjQ1rClAPuG2eMy+oRuV26mSuE0EbZeULFKdyc/YGX1Z/JsC06FXxQttdX4aahjSMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+
+    <body>
+    <select id="select">
+      <option value="C" selected>C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+    </select>
+
+        <button id="start">start</button>
+        <button id="clear">clear</button>
+        <p id="status">no empezó</p>
+        <script type="text/javascript">
+        let clicks = 1;
+        let note = document.getElementById("select").value;
+        console.log(note);
+        const osc = new Tone.Oscillator(note+"1").toDestination();//.start().toDestination();
+        document.getElementById("select").addEventListener('change', ()=>{note=document.getElementById("select").value;});
+        document.getElementById("clear")?.addEventListener('click', ()=>{clicks=0; note=document.getElementById("select").value;});
+        document.getElementById('start')?.addEventListener('click', async () => {
+                let newValue = note+clicks.toString();
+                osc.frequency.rampTo(newValue,.4);
+
+                console.log("starting with ", newValue);
+                osc.start();
+                document.getElementById("status").innerText = "tocando " + newValue;
+                // start at "C4"
+                //osc.frequency.value = "C4";
+                //// ramp to "C2" over 2 seconds
+                //osc.frequency.rampTo("C2", 2);
+                //// start the oscillator for 2 seconds
+                //osc.start().stop("+3");
+                //console.log('audio is ready')
+            clicks +=1
+        })
+            </script>
+    </body>
+
+</html>

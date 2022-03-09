@@ -1,0 +1,36 @@
+<canvas id='canvas' width=500px height=500px></canvas>
+<script>
+  function draw(canvas,ctx, clicks){
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < 6 + clicks; i++) {
+      for (var j = 0; j < 6 + clicks; j++) {
+        ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ', ' +
+          Math.floor(255 - 42.5 * j) + ', 255)';
+        ctx.fillRect(j * 35, i * 35, 35, 35);
+      }
+    }
+
+  }
+  let clicks = 0;
+  let desc = false;
+  var canvas = document.getElementById('canvas')
+  var ctx = canvas.getContext('2d');
+  draw(canvas,ctx,clicks);
+  function march() {
+    if (desc) {
+      clicks -= 1;
+      if (clicks < 0) {
+        desc = false;
+      }
+    } else {
+      clicks += 1;
+      if (clicks >= 10) {
+        desc = true;
+      }
+    }
+    draw(canvas,ctx,clicks);
+    setTimeout(march,30);
+  }
+  march();
+</script>

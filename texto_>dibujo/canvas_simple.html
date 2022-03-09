@@ -1,0 +1,17 @@
+<html>
+    <body>
+    <canvas id="tutorial" width="1000" height="1000"></canvas>
+    <script>
+        var canvas = document.getElementById('tutorial');
+        var ctx = canvas.getContext('2d');
+        function draw(){
+            ctx.fillStyle = 'rgba(200, 0, 0,.2)';
+            ctx.fillRect(10, 10, 50, 50);
+
+            ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+            ctx.fillRect(30, 30, 50, 50);
+        }
+        draw();
+    </script>
+    </body>
+</html>
