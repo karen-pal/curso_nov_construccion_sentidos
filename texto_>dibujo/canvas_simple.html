@@ -4,14 +4,19 @@
     <script>
         var canvas = document.getElementById('tutorial');
         var ctx = canvas.getContext('2d');
-        function draw(){
+        function draw(i){
             ctx.fillStyle = 'rgba(200, 0, 0,.2)';
-            ctx.fillRect(10, 10, 50, 50);
+            ctx.fillRect(i, 10, 50, 50);
 
             ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-            ctx.fillRect(30, 30, 50, 50);
+            ctx.fillRect(i, 30, 50, 50);
+
+            ctx.fillStyle = 'rgba(100, 0, 200, 0.5)';
+            ctx.fillRect(i+100, 30, 20, 50);
         }
-        draw();
+        draw(200);
+        draw(10);
+        draw(3);
     </script>
     </body>
 </html>
