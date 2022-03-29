@@ -14,48 +14,60 @@
             var Cmajor = ['C4','D4','E4','F4','G4','A4','B4','C5'];
             var Ebmajor = ['Eb4','F4','G4','Ab4','Bb4','C5','D5','Eb5'];
             var enigmatic = ['C3','Db3','E3','F#3','G3','A#3','B3','C4'];
- var files = [ 
-     "./3/UR1_C1_f_RR1.wav",
-     "./3/UR1_C3_f_RR1.wav",  
-     "./3/UR1_C5_f_RR1.wav",  
-     "./3/UR1_C7_f_RR1.wav",  
-     "./3/UR1_G2_f_RR1.wav",  
-     "./3/UR1_G4_f_RR1.wav",  
-     "./3/UR1_G6_f_RR1.wav",
-     "./3/UR1_C2_f_RR1.wav",  
-     "./3/UR1_C4_f_RR1.wav",  
-     "./3/UR1_C6_f_RR1.wav",  
-     "./3/UR1_G1_f_RR2.wav",  
-     "./3/UR1_G3_f_RR1.wav",  
-     "./3/UR1_G5_f_RR1.wav",  
-     "./3/UR1_G7_f_RR1.wav",
-     ]
+            //let url = "https://github.com/karen-pal/curso_construcci-n_sentidos/blob/main/texto_%3Esonido/paso_a_paso/3/"
+            let url = "http://0.0.0.0:5055/3/"
+            var files = [ 
+                url+"UR1_C1_f_RR1.wav",
+                url+"UR1_C3_f_RR1.wav",  
+                url+"UR1_C5_f_RR1.wav",  
+                url+"UR1_C7_f_RR1.wav",  
+                url+"UR1_G2_f_RR1.wav",  
+                url+"UR1_G4_f_RR1.wav",  
+                url+"UR1_G6_f_RR1.wav",
+                url+"UR1_C2_f_RR1.wav",  
+                url+"UR1_C4_f_RR1.wav",  
+                url+"UR1_C6_f_RR1.wav",  
+                url+"UR1_G1_f_RR2.wav",  
+                url+"UR1_G3_f_RR1.wav",  
+                url+"UR1_G5_f_RR1.wav",  
+                url+"UR1_G7_f_RR1.wav",
+                ]
 
             const pannerL = new Tone.Panner(-1).toDestination();
             const pannerR = new Tone.Panner(1).toDestination();
-            const player = new Tone.Player().toDestination();
+            let player = new Tone.Player().toDestination();
             player.load(files[i]);
 
             const oscC = new Tone.Oscillator(Cmajor[i]).connect(pannerL);
-            const oscEb = new Tone.Oscillator(enigmatic[j]).connect(pannerR);
+            const oscEb = new Tone.Oscillator(Ebmajor[j]).connect(pannerR);
             var myTimerL, myTimerR; 
             document.getElementById("start").addEventListener("click",()=>{ console.log("EMPEZAR"); startR(); startL();}); //oscC.start(); oscEb.start()});
             function startR(){
                function aumentar () {
                     console.log("LLAMADO " + i.toString());
                     i = (i+1) % files.length;
-                    player.load(files[i]);
-                    
+                    //player.load(files[i]);
+                   if (i%2 === 1) {
+                    player.loop=true
+                    //player.loopStart=0;
+                    //player.loopEnd=0.6;
                     player.start();
+                   }
+                   else {
+                     player = new Tone.Player().toDestination();
+                        player.load(files[i]);
 
+                   }
                }
-                myTimerR = setInterval(()=> aumentar(), 1000);
+                myTimerR = setInterval(()=> aumentar(), 200);
+                aumentar();
+                //player.start();
             }
             function startL(){
                function aumentar () {
                     console.log("LLAMADO " + j.toString());
-                    j = (j+1) % enigmatic.length;
-                    oscEb.frequency.rampTo(enigmatic[j],.4);
+                    j = (j+1) % Ebmajor.length;
+                    oscEb.frequency.rampTo(Ebmajor[j],.4);
                     oscEb.start();
 
                }
