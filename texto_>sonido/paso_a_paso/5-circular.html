@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.37/Tone.js" integrity="sha512-gK8OnTXn8cTYkHqYX+bhzjQ1rClAPuG2eMy+oRuV26mSuE0EbZeULFKdyc/YGX1Z/JsC06FXxQttdX4aahjSMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+
+    <body>
+        <button id="start">start</button>
+        <button id="stop">parar</button>
+        <button id="subir">subir</button>
+        <script>
+            let i = 0;
+            var Cmajor = ['C4','D4','E4','F4','G4','A4','B4','C5'];
+
+            //var Ebmajor = ['Eb4','F4','G4','Ab4','Bb4','C5','D5','Eb5'];
+            //var enigmatic = ['C4','Db4','E4','F#4','G4','A#4','B4','C5'];
+            const osc = new Tone.Oscillator(Cmajor[i]).toDestination()
+            document.getElementById("start").addEventListener("click",()=>{ console.log("EMPEZAR");osc.start()});
+            document.getElementById("stop").addEventListener("click", ()=>{ console.log("PARAR");osc.stop(0)});
+            document.getElementById("subir").addEventListener("click",
+                ()=>{
+                    i = (i+1) % Cmajor.length;
+                    osc.frequency.rampTo(Cmajor[i],.4);
+                    osc.start();
+                })
+        </script>
+    </body>
+
+</html>

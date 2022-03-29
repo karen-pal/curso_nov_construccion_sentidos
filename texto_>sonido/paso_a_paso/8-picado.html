@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.37/Tone.js" integrity="sha512-gK8OnTXn8cTYkHqYX+bhzjQ1rClAPuG2eMy+oRuV26mSuE0EbZeULFKdyc/YGX1Z/JsC06FXxQttdX4aahjSMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+
+    <body>
+        <button id="start">start</button>
+        <button id="stop">parar</button>
+        <script>
+            let i = 0;
+            let j = 0;
+            var Cmajor = ['C4','D4','E4','F4','G4','A4','B4','C5'];
+            var Ebmajor = ['Eb4','F4','G4','Ab4','Bb4','C5','D5','Eb5'];
+            var enigmatic = ['C3','Db3','E3','F#3','G3','A#3','B3','C4'];
+
+            const pannerL = new Tone.Panner(-1).toDestination();
+            const pannerR = new Tone.Panner(1).toDestination();
+            const oscC = new Tone.Oscillator(Cmajor[i]).connect(pannerL);
+            const oscEb = new Tone.Oscillator(enigmatic[j]).connect(pannerR);
+            var myTimerL, myTimerR; 
+            document.getElementById("start").addEventListener("click",()=>{ console.log("EMPEZAR"); startR(); startL();}); //oscC.start(); oscEb.start()});
+            function startR(){
+               function aumentar () {
+                    console.log("LLAMADO " + i.toString());
+                    i = (i+1) % Cmajor.length;
+                    oscC.frequency.rampTo(Cmajor[i],.4);
+                    oscC.start();
+
+               }
+                myTimerR = setInterval(()=> aumentar(), 1000);
+            }
+            function startL(){
+               function aumentar () {
+                    console.log("LLAMADO " + j.toString());
+                    j = (j+1) % enigmatic.length;
+                    oscEb.frequency.rampTo(enigmatic[j],.4);
+                    oscEb.start();
+
+               }
+                myTimerL = setInterval(()=> aumentar(), 2000);
+            }
+            document.getElementById("stop").addEventListener("click", ()=>{ console.log("PARAR");clearInterval(myTimerR);clearInterval(myTimerL); oscC.stop(0); oscEb.stop();});
+        </script>
+    </body>
+
+</html>
