@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 3 sonido texto sonido texto</title>
+    <!--link rel="stylesheet" href="style.css"--!>
+    <style>
+
+    </style>
+  </head>
+  <body>
+  <button class="jsBtn" id="1">1</button>
+  <button class="jsBtn" id="2">2</button>
+  <button class="jsBtn" id="3">3</button>
+  <button class="jsBtn" id="4">4</button>
+  <button class="jsBtn" id="5">5</button>
+  <button class="jsBtn" id="6">6</button>
+  <button class="jsBtn" id="7">7</button>
+  <button class="jsBtn" id="8">8</button>
+  <button class="jsBtn" id="9">9</button>
+  <button class="jsBtn" id="prev"><</button>
+  <button class="jsBtn" id="next">></button>
+	<script>
+        let currentPage = 1;
+
+        let pages = [
+            {"id":"1", "page":"1-incluir_libreria.html", "descr":"Incluir librería de tonejs en el html"},
+            {"id":"2", "page":"2-test_libreria.html", "descr":"testear la librería para chequear que esté todo bien"},
+            {"id":"3", "page":"3-boton_stop.html", "descr":"agregar botón de detener sonido"},
+            {"id":"4", "page":"4-subir_nota.html", "descr":"poder hacer subir la nota programáticamente"},
+            {"id":"5", "page":"5-circular.html", "descr":"Que la nota recorra como cinta circular la escala"},
+            {"id":"6", "page":"6-dos_escalas.html", "descr":"Que suenen dos escalas, una en cada parlante"},
+            {"id":"7", "page":"7-automatico.html", "descr":"Que se ejecute de forma automática, sin necesidad de ir apretando el botón"},
+            {"id":"8", "page":"8-picado.html", "descr":"manejar con distintos intervalos ambas escalas"},
+            {"id":"9", "page":"9-sampler.html", "descr":"que use sonidos sampleados en vez de las notas puras"},
+        ];
+        var buttons = document.getElementsByClassName('jsBtn');
+        function setPage(e) {
+
+            currentPage = e.currentTarget.page;
+            console.log(currentPage);
+            e.currentTarget.button.style.background="blue";
+            let frames = document.querySelector("iframe");
+            let h1 = document.querySelector("h1");
+            let code = document.querySelector("code");
+            document.body.removeChild(frames);
+            document.body.removeChild(h1);
+            document.body.removeChild(code);
+            prepareFrame();
+        }
+        for(var i=0; i<buttons.length; i++){
+            console.log("i "+i.toString());
+            if (buttons[i].id === "prev"){
+                buttons[i].addEventListener("click", ()=>{currentPage =Math.abs( (currentPage - 1 ))% pages.length; console.log(currentPage);});
+            }else if (buttons[i].id === "next") {
+
+                buttons[i].addEventListener("click", ()=>{currentPage = (currentPage + 1) % pages.length; console.log(currentPage); prepareFrame()});
+
+
+            } else {
+                buttons[i].addEventListener("click", setPage, false )
+                buttons[i].page = i % pages.length;
+                buttons[i].button = buttons[i];
+            }
+        }
+        function prepareFrame() {
+            var h1= document.createElement('H1');
+            h1.innerHTML = pages[currentPage]["descr"];
+            var code= document.createElement('code');
+            code.innerHTML = pages[currentPage]["page"];
+            console.log(h1);
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", pages[currentPage]["page"]);
+            ifrm.style.width = "640px";
+            ifrm.style.height = "480px";
+            document.body.appendChild(ifrm);
+            document.body.appendChild(h1);
+            
+            document.body.appendChild(code);
+            }
+        prepareFrame();
+    </script>
+  </body>
+</html>
