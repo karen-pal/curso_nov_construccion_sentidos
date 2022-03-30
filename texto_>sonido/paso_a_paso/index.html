@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clase 3 sonido texto sonido texto</title>
-    <!--link rel="stylesheet" href="style.css"--!>
+    <title>Clase 3: sonido texto sonido texto</title>
     <style>
+        button{
+        background:white;
+        font-size:5vw;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
     </style>
   </head>
@@ -42,6 +48,7 @@
 
             currentPage = e.currentTarget.page;
             console.log(currentPage);
+            for(var i=0;i<buttons.length;i++){buttons[i].style.background="white"}
             e.currentTarget.button.style.background="blue";
             let frames = document.querySelector("iframe");
             let h1 = document.querySelector("h1");
