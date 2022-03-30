@@ -15,8 +15,9 @@
             var Ebmajor = ['Eb4','F4','G4','Ab4','Bb4','C5','D5','Eb5'];
             var enigmatic = ['C3','Db3','E3','F#3','G3','A#3','B3','C4'];
             //let url = "https://github.com/karen-pal/curso_construcci-n_sentidos/blob/main/texto_%3Esonido/paso_a_paso/3/"
-            let url = "http://0.0.0.0:5055/3/"
-            var files = [ 
+            let url_local = "http://0.0.0.0:5055/3/"
+            let url="https://tonejs.github.io/audio/drum-samples/"
+            var files_local = [ 
                 url+"UR1_C1_f_RR1.wav",
                 url+"UR1_C3_f_RR1.wav",  
                 url+"UR1_C5_f_RR1.wav",  
@@ -31,6 +32,14 @@
                 url+"UR1_G3_f_RR1.wav",  
                 url+"UR1_G5_f_RR1.wav",  
                 url+"UR1_G7_f_RR1.wav",
+                ]
+
+            var files = [ 
+                url+"handdrum-loop.mp3",
+                url+"conga-rhythm.mp3",  
+                url+"hihat-short.mp3",  
+                url+"breakbeat.mp3",  
+                url+"Djembe.mp3",  
                 ]
 
             const pannerL = new Tone.Panner(-1).toDestination();
@@ -59,7 +68,7 @@
 
                    }
                }
-                myTimerR = setInterval(()=> aumentar(), 200);
+                myTimerR = setInterval(()=> aumentar(), 2000);
                 aumentar();
                 //player.start();
             }
