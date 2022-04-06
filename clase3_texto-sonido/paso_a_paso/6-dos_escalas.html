@@ -23,7 +23,7 @@
             document.getElementById("start").addEventListener("click",()=>{ console.log("EMPEZAR");oscC.start(); oscEb.start()});
             document.getElementById("stop").addEventListener("click", ()=>{ console.log("PARAR");oscC.stop(0); oscEb.stop();});
             document.getElementById("subir").addEventListener("click",
-                ()=>{
+                () => {
                     i = (i+1) % Cmajor.length;
                     oscC.frequency.rampTo(Cmajor[i],.4);
                     oscC.start();

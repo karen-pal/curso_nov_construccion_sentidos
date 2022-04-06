@@ -30,7 +30,7 @@
                     oscEb.start();
 
                }
-                myTimer = setInterval(()=> aumentar(), 100);
+                myTimer = setInterval(aumentar, 100);
             }
             document.getElementById("stop").addEventListener("click", ()=>{ console.log("PARAR");clearInterval(myTimer); oscC.stop(0); oscEb.stop();});
         </script>

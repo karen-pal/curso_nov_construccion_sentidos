@@ -24,11 +24,11 @@
         function march() {
             clicks++;
             if (clicks%steps===0){
-            clicks = -clicks;
-            i++;
-            steps +=15;
+                clicks = -clicks;
+                i++;
+                steps +=15;
             }
-            draw(canvas,ctx,clicks);
+            draw();
             setTimeout(march,20);
         }
         march();
