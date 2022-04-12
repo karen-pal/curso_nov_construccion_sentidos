@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <iframe id="map" class="iframe" src="https://maps.google.com/?ll=23.135249,-82.359685&z=9&t=m&output=embed" height="1000" width=1000 frameborder="0" style="border:0" allowfullscreen></iframe>
+        <script>
+        document.body.addEventListener("click",
+            (e)=>{  
+                console.log(e.clientX);
+                let src=document.getElementById("map").src;
+                console.log(src)
+                let urlBase = src.split("?")[0]
+                let urlArgs = src.split("?")[1].split(",")
+                let newValue =parseInt(urlArgs[0].split("=")[1])+e.clientX/1000;
+                let urlx = "ll="+newValue.toString()
+                console.log(">>>>>>><",urlx)
+                let urly = urlArgs[1]
+                let newUrl = urlBase+"?"+urlx+","+urly
+                console.log(newUrl)
+                document.getElementById("map").setAttribute("src", newUrl)
+                }
+            )
+        </script>
+    </body>
+</html>

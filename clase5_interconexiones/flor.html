@@ -1,0 +1,74 @@
+<html>
+<body>
+<div class="slidecontainer">
+   cantidad pétalos
+  <input type="range" min="1" max="100" value="3" class="slider" id="myRange">
+  </br>
+  radio flor
+  <input type="range" min="1" max="500" value="300" class="slider" id="radio">
+  </br>
+  tamaño pétalo
+  <input type="range" min="1" max="500" value="100" class="slider" id="size">
+</div>
+<canvas id="flor" width=800 height=800>
+<script>
+    var adj = 3; // set slider in middle
+    var t = 0.0;
+    var radius = 300;// set slider in middle
+    var size= 100;// set slider in middle
+    // slider
+    let canvas = document.getElementById("flor");
+    let ctx = canvas.getContext("2d");
+    const radians = deg => (deg * Math.PI) / 180.0; //degstorad
+    let framecount=0;
+    function draw() {
+     ctx.fillStyle = "rgba(0,0,0,.1)";
+     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+
+      for (var i = 0; i < framecount; i++) {
+        var angle = Math.cos(radians(i * adj + t)) * radius;
+
+        var x = canvas.width/ 2 + Math.sin(radians(i)) * angle;
+        var y = canvas.height/2 + Math.cos(radians(i)) * angle;
+        //con elipses
+        ctx.beginPath();
+        ctx.strokeStyle= "rgba("+(i%256).toString()+", 4, 180,.3)";
+        ctx.ellipse(x, y, size, size, 0, 0, 2 * Math.PI);
+        ctx.stroke();
+        // o con cuadrados:
+        //ctx.fillStyle= "rgba("+(i%256).toString()+", 4, 180,.06)";
+        //ctx.fillStyle="rgba(255, 0, 0,.05)";
+        //ctx.fillRect(x, y, 50, 50); 
+      }
+      framecount++;
+      t += .25;
+
+      //if (framecount % 100 == 0) {
+      //  adj++;
+      //  if (adj >= 90) {
+      //    adj = 0;
+      //  }
+      //}
+      
+    }
+    setInterval(draw,10);
+    var slider = document.getElementById("myRange");
+    slider.oninput = function() {
+      adj = this.value;
+        framecount=0;
+    } 
+    var sliderRadio = document.getElementById("radio");
+    sliderRadio.oninput = function() {
+        console.log(this.value);
+      radius = this.value;
+        framecount=0;
+    } 
+    var sliderSize = document.getElementById("size");
+    sliderSize.oninput = function() {
+        console.log(this.value);
+      size = this.value;
+        framecount=0;
+    } 
+</script>
+</body>
+</html>

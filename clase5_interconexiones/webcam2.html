@@ -1,0 +1,95 @@
+<html>
+<body>
+    <!-- Stream video via webcam -->
+    <div id="video-wrap">
+    <video autoplay="true" id="webCamera" style="display:none"> </video>
+    <!-- Webcam video snapshot -->
+    <canvas  id="videoCanvas" width="640" height="480"></canvas>
+    </div>
+
+    <script>
+
+        const constraints = {
+          audio: true,
+          video: {
+            width: 1280, height: 720
+          }
+        };
+
+        // Access webcam
+        async function init() {
+          try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            handleSuccess(stream);
+          } catch (e) {
+            errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+          }
+        }
+
+        // Success
+        function handleSuccess(stream) {
+          window.stream = stream;
+          video.srcObject = stream;
+        }
+
+        // Load init
+        init();
+        let i=1;
+        function drawImge(){
+            var video = document.querySelector("#webCamera");
+            var canvas = document.querySelector("#videoCanvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            setTimeout(drawImge , 100);
+         }
+        var canvas = document.querySelector("#videoCanvas");
+        function addColorInfo(X,Y,context){
+            let R =context.getImageData(X, Y,1,1).data[0];
+            let G =context.getImageData(X, Y,1,1).data[1];
+            let B = context.getImageData(X, Y,1,1).data[2];
+            var elemDiv = document.createElement('div');
+            elemDiv.style.cssText = 'position:absolute;z-index:100000;font-size:'+R.toString()+'px';
+            elemDiv.style.left = X+'px';
+            elemDiv.style.top = Y+'px';
+            elemDiv.style.color = "rgb("+R.toString() + "," + G.toString() + "," + B.toString()+")";
+            document.body.appendChild(elemDiv);
+            var colorDiv = document.createElement('div');
+            let randomWidth = '100px';
+            colorDiv.style.cssText = 'position:absolute;z-index:100000;background-color:rgb('+R+','+G+','+B+');width:100px;height:'+randomWidth+';';
+            colorDiv.style.left = X+'px';
+            colorDiv.style.top = Y+'px';
+            document.body.appendChild(colorDiv);
+        }
+        //canvas.addEventListener("mouseover", (e)=>{
+        //    var ctx = canvas.getContext('2d');
+        //    const rect = canvas.getBoundingClientRect()
+        //    const x = event.clientX - rect.left
+        //    const y = event.clientY - rect.top
+        //    addColorInfo(x,y,ctx);
+
+        //})
+    var video = document.querySelector("#webCamera");
+     video.onplay = function() {
+      setTimeout(drawImge , 300);
+     };
+        function drawOver(){
+            var ctx = canvas.getContext('2d');
+            for (let i=0; i<canvas.width;i++){
+                for (let j=0; j<canvas.height; j++){
+                    console.log(i,j);
+                    //addColorInfo(i,j,ctx);
+                    //setTimeout(drawOver,100);
+                }
+            }
+        }
+        drawOver();
+    </script>
+</body>
+</html>
+
