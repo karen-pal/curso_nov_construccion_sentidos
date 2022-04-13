@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="500" value="3" class="slider" id="rango">
+          <input type="range" min="1" max="500" value="3" class="slider" id="rango2">
+        </div>
+        <canvas id="circulo" width=800 height=800></canvas>
+        <script>
+            let variable=100;
+            let variable2=100;
+            let canvas = document.getElementById("circulo")
+            let ctx = canvas.getContext("2d")
+            function draw() {
+                ctx.fillStyle = "rgba(20,10,20,.1)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height); 
+                ctx.beginPath();
+                ctx.lineWidth = 10;
+                ctx.strokeStyle= "rgba(255, 0, 0,1)";
+                ctx.ellipse(400, 400, variable2, variable, 0, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+            setInterval(draw,100);
+            var slider = document.getElementById("rango");
+            slider.oninput = function() {
+                variable = this.value;
+            } 
+            var slider2 = document.getElementById("rango2");
+            slider2.oninput = function() {
+                variable2 = this.value;
+            } 
+        </script>
+    </body>
+</html>
