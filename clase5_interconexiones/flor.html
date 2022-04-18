@@ -1,4 +1,11 @@
 <html>
+    <head>
+            <style>
+            body {background:black; position:relative;}
+            input{z-index:100;position:fixed;}
+            canvas{position:absolute;top:50%;left:50%;  transform: translate(-50%, -50%);}
+            </style>
+    </head>
 <body>
 <div class="slidecontainer">
    cantidad pétalos
@@ -10,7 +17,7 @@
   tamaño pétalo
   <input type="range" min="1" max="500" value="100" class="slider" id="size">
 </div>
-<canvas id="flor" width=800 height=800>
+<canvas id="flor" width=1920 height=1000>
 <script>
     var adj = 3; // set slider in middle
     var t = 0.0;
