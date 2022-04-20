@@ -43,7 +43,9 @@
                 // new speech recognition object
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
+                var i = 0;
                 recognition.lang = 'es-US'; //'en-US';
+                recognition.continuous = 'true'; //'en-US';
             
                 // This runs when the speech recognition service starts
                 recognition.onstart = function() {
@@ -51,8 +53,9 @@
                 };
                 
                 recognition.onspeechend = function() {
-                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
-                    recognition.stop();
+                    console.log("DEJE DE ESCUCHAR")
+                    //action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                    //recognition.stop();
                 }
                 recognition.onend = function() {
                       recognition.start();
@@ -61,13 +64,15 @@
               
                 // This runs when the speech recognition service returns result
                 recognition.onresult = function(event) {
-                    var transcript = event.results[0][0].transcript;
-                    var confidence = event.results[0][0].confidence;
+                    console.log(event.results);
+                    var transcript = event.results[i][0].transcript;
+                    var confidence = event.results[i][0].confidence;
                     if (transcript.includes("a")){
                         document.body.style.background = "yellow";
                     }
                     output.innerHTML += "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"% </br>";
                     output.classList.remove("hide");
+                    i++;
                 };
               
                recognition.start()
