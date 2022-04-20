@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: black
+        }
+            body {position:relative;width:100%;height:100%;}
+            canvas {position:absolute;top:50%;left:50%;  transform: translate(-50%, -50%)}
+    </style>
+</head>
+
+<body>
+
+    <script src="https://unpkg.com/meyda/dist/web/meyda.min.js"></script>
+    <script src="audio_template.js"></script>
+    <script>
+        const a = new Audio({
+            numBins: 10
+        })
+        console.log(a)
+
+        function draw() {
+            a.draw();
+            //console.log(a);
+
+            a.tick();
+            console.log("ticked")
+            //console.log(a.meyda["_m"]);
+        }
+        setInterval(draw, 40);
+    </script>
+
+</body>
+
+</html>

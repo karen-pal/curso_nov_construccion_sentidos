@@ -1,0 +1,57 @@
+    var adj = 3; // set slider in middle
+    var t = 0.0;
+    var radius = 300;
+
+    // slider
+    var slider; //1 - 90
+    let canvas = document.getElementById("flor");
+    let ctx = canvas.getContext("2d");
+    function init() {
+     ctx.fillStyle = "rgb(20,10,10)";
+     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    }
+    init();
+    const radians = deg => (deg * Math.PI) / 180.0; //degstorad
+    let framecount=0;
+    function draw() {
+     ctx.fillStyle = "rgba(20,10,20,.4)";
+     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+
+      for (var i = 0; i < 360; i++) {
+        var angle = Math.cos(radians(i * adj + t)) * radius;
+
+        var x = canvas.width/ 2 + Math.sin(radians(i)) * angle;
+        var y = canvas.height/2 + Math.cos(radians(i)) * angle;
+        console.log(x,y)
+        //con elipses
+        ctx.beginPath();
+        ctx.strokeStyle= "rgba(255, 0, 0,.1)";
+        ctx.ellipse(x, y, 100, 100, 0, 0, 2 * Math.PI);
+        ctx.stroke();
+        // o con cuadrados:
+        //ctx.fillStyle="rgba(255, 0, 0,.05)";
+        //ctx.fillRect(x, y, 50, 50); 
+      }
+      framecount++;
+      t += .25;
+
+      if (frameCount % 100 == 0) {
+        adj++;
+        if (adj >= 90) {
+          adj = 0;
+        }
+      }
+      
+      //// slider
+      //adj = slider.value();
+      //fill(255,0,0);
+      //textSize(16);
+      //textAlign(CENTER);
+      //text(adj,width/2, height-5);
+    }
+    setInterval(draw,100);
+     var slider = document.getElementById("myRange");
+    slider.oninput = function() {
+      adj = this.value;
+    } 
+

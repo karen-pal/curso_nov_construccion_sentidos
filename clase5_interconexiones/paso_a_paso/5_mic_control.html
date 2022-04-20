@@ -1,0 +1,40 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="900" value="3" class="slider" id="rango">
+          <input type="range" min="1" max="500" value="3" class="slider" id="rango2">
+        </div>
+        <script src="https://unpkg.com/meyda/dist/web/meyda.min.js"></script>
+        <script src="audio_template.js"></script>
+        <script>
+        const a = new Audio({
+            numBins: 10
+        })
+        console.log(a)
+        var variable= 100;
+        var variable2= 100;
+        var slider = document.getElementById("rango");
+        slider.oninput = function() {
+         variable = this.value;
+           //console.log(variable);
+        } 
+        var slider2 = document.getElementById("rango2");
+        slider2.oninput = function() {
+            variable2 = this.value;
+        }
+
+        function draw() {
+           console.log(variable);
+            a.draw(variable,variable2);
+            //console.log(a);
+
+            a.tick();
+            console.log("ticked")
+            //console.log(a.meyda["_m"]);
+        }
+        setInterval(draw, 40);
+        </script>
+    </body>
+</html>
