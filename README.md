@@ -9,8 +9,8 @@ Para WIP arte digital.
 <img src="menades.png">
 
 
-[Reflexiones Pre-curso](https://karen-pal.github.io/pre_curso)
-[Página del curso en WIP](https://wipartedigital.com/2022/02/la-construccion-de-sentidos-en-el-arte-computacional/)
+* [Reflexiones Pre-curso](https://karen-pal.github.io/pre_curso)
+* [Página del curso en WIP](https://wipartedigital.com/2022/02/la-construccion-de-sentidos-en-el-arte-computacional/)
 
 # Estructura de este repositorio
 
