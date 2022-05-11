@@ -1,0 +1,41 @@
+[
+ [
+  {
+   "verb": "desaparezco",
+   "type": "verbo",
+   "len": 11
+  }
+ ],
+ {
+  "type": "sep",
+  "value": "#",
+  "text": "#",
+  "offset": 11,
+  "lineBreaks": 0,
+  "line": 1,
+  "col": 12
+ },
+ [
+  {
+   "verb": "desaparezco",
+   "type": "verbo",
+   "len": 11
+  }
+ ],
+ {
+  "type": "sep",
+  "value": "#",
+  "text": "#",
+  "offset": 23,
+  "lineBreaks": 0,
+  "line": 1,
+  "col": 24
+ },
+ [
+  {
+   "verb": "desaparezco",
+   "type": "verbo",
+   "len": 11
+  }
+ ]
+]

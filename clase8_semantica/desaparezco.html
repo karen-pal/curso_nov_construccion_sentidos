@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>marmotas</title>
+    <!--link rel="stylesheet" href="style.css"--!>
+    <style>
+    body {
+        background:black;
+    }
+    .container {
+        height: 100vh;
+    }
+
+    .container img {
+        max-width: 100%;
+        max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    }
+    .custom-field::after {
+  content: attr(aria-label);
+}
+.custom-field input {
+
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+
+  border-radius: 3px;
+  position:fixed;
+  z-index:10000;
+  font-size: 20px;
+  color:white;
+}
+          html, body {margin: 0; height: 100%; overflow: hidden}
+
+          ::placeholder {
+            color:white;
+          }
+          #exec_word {
+            background: rgba(224,100,100, .1);
+            bottom:0%;
+          }
+          #exec_tree {
+            background: rgba(224,255,232, .1);
+            top:0%;
+          }
+          img {
+            position:fixed;
+            filter: contrast(1);
+          }
+          button {
+              display:none;
+          }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+            <canvas width=1000 height=1000 id="dibujo"/>
+
+      </div>
+      <!--tree--!>
+      <div class="input">
+          {
+            <label class="custom-field" >
+            <input type="text" id="exec_tree" size="70" placeholder="{∅}">
+            <button id="myButton" onclick="buttonCodeTree()">Submit</button>
+            </label>
+          }
+      </div>
+      <!--tree--!>
+
+    <script src="./desaparezco.js"></script>
+	<!--script src="index.js"></script--!>
+  </body>
+</html>
