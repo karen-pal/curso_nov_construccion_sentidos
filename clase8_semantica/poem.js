@@ -10,7 +10,7 @@ function id(x) { return x[0]; }
 	const lexer = moo.compile({
 	  ws:     /[ \t]+/,
 	 	prep: ["como", "sobre", "cubierto de"],
-	  sust : ["una hoja de loto", "gotas de rocio", "el arbol muerto"],
+	  sust : ["una hoja de loto", "gotas de rocio", "el arbol muerto", "la noche", "el viento"],
 	  verbo: ["desaparezco","florece","al cabo cae"],
       sep: "#",
       NL:      { match: /\n/, lineBreaks: true },

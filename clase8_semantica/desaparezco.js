@@ -25,7 +25,7 @@
                 if (ast === undefined) {    //avance natural del tiempo
                     console.log(r,ctx);
                     ctx.fillStyle = white;
-                    ctx.fillRect(0,0, 1000,1000)
+                    ctx.fillRect(0,0, canvas.width,canvas.height);
                 } else {                    // ingreso de un poema
                     let verso1 = ast[0][0]
                     let verso2 = ast[2][0]
@@ -37,8 +37,8 @@
                         if (verso.type === "verbo"){
                           let r = verso.len;
                           console.log(r*10) 
-                          color = "rgba("+(r*10).toString()+",200,200,.1)";
-                          innerRadius += 100;
+                          color = "rgba("+(r*10).toString()+",100,"+(r*100).toString()+",.1)";
+                          innerRadius += 200;
                         } else {
                           r = verso.lenSust;
                           g = verso.lenPrep;
