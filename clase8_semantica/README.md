@@ -10,6 +10,14 @@
 
 `nearleyc poema.ne -o poem.js`
 
+# Uso
+levantar el server
+
+node server.js
+
+abrir desaparezco.html en un navegador.
+
+introducir un poema. Versos separados por numerales.
 
 # Ejemplos
 florece#florece#florece
