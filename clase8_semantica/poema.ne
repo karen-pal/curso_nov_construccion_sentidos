@@ -5,9 +5,9 @@
 	const moo = require("moo")
 	const lexer = moo.compile({
 	  ws:     /[ \t]+/,
-	 	prep: ["como", "sobre"],
-	  sust : ["una hoja de loto", "gotas de rocío"],
-	  verbo: "desaparezco",
+	 	prep: ["como", "sobre", "cubierto de"],
+	  sust : ["una hoja de loto", "gotas de rocio", "el arbol muerto"],
+	  verbo: ["desaparezco","florece","al cabo cae"],
       sep: "#",
       NL:      { match: /\n/, lineBreaks: true },
 	});
