@@ -20,38 +20,55 @@
         r=0;
         b=0;
         g=0;
-            const canvas = document.getElementById("dibujo");
-            const ctx = canvas.getContext('2d')
+        const canvas = document.getElementById("dibujo");
+        const ctx = canvas.getContext('2d')
+
         const clock = function (ctx, w, h, ast) {
-                if (ast === undefined){
+                if (ast === undefined) {    //avance natural del tiempo
                     console.log(r,ctx);
-                          ctx.fillStyle = "rgba(200,200,200,.1)";
-                      ctx.fillRect(0,0, 1000,1000)
-                } else {
+                    ctx.fillStyle = "rgba(200,200,200,.1)";
+                    ctx.fillRect(0,0, 1000,1000)
+                } else {                    // ingreso de un poema
                     let verso1 = ast[0][0]
                     let verso2 = ast[2][0]
                     let verso3 = ast[4][0]
-                  let versos = [verso1,verso2,verso3];
+                    let versos = [verso1,verso2,verso3];
                     console.log("clock:", versos);
+                    let color;
                     for(const verso of versos) {
                         if (verso.type === "verbo"){
                           let r = verso.len;
                           console.log(r*10) 
-                          ctx.fillStyle = "rgba("+(r*10).toString()+",200,200,.1)";
-                    }else{
-                        r = verso.lenSust;
-                        g = verso.lenPrep;
-                        b = verso.len;
-                          console.log(r*10) 
-                          console.log(b*10) 
-                          console.log(g*10) 
-                      ctx.fillStyle = "rgba("+(r*10).toString()+","+(g*30).toString()+","+(b*20).toString()+",.5)";
+                          color = "rgba("+(r*10).toString()+",200,200,.1)";
+                        } else {
+                          r = verso.lenSust;
+                          g = verso.lenPrep;
+                          b = verso.len;
+                          color = "rgba("+(r*10).toString()+","+(g*30).toString()+","+(b).toString()+",.5)";
+                        }
+                        var x = w/2,
+                        y = h/2,
+                        // Radii of the white glow.
+                        innerRadius = 15,
+                        outerRadius = 270,
+                        // Radius of the entire circle.
+                        radius = 260;
+
+                        var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+                        gradient.addColorStop(0, 'white');
+                        gradient.addColorStop(1, color);
+
+                        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+
+                        ctx.fillStyle = gradient;
+                        ctx.fill();
                     }
-                      ctx.fillRect(verso.len, verso.len*20, verso.len*20+300, verso.len+500)}
+                }
+            r++;g++;b++
+
         }
-        r++;g++;b++
-        }
-        setInterval(clock,1000,ctx);
+
+        setInterval(clock,100,ctx);
         const drawPoem = (astRaw) =>
         {
             let ast = JSON.parse(astRaw);
