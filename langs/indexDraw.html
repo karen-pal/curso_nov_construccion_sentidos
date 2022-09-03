@@ -1,15 +1,24 @@
 <html>
     <head>
         <style>
+            html {background:black; color:white}
             button {display:none};
         </style>
     </head>
     <body>
         <h1> Lenguaje simple</h1>
 
-        <p id="content">Este lenguaje puede mostrar texto usando la sintaxis</p>
-        <code>mostrar stringAMostrar</code>
+        <p id="content">Este lenguaje puede dibujar usando la sintaxis</p>
+        <code>mostrar cuadrado cssColor</code>
         <br/>
+        <p> o alternativamente, anidar dibujos usando la sintaxis </p>
+        <code>y adentro (mostrar cuadrado cssColor)</code>
+        <br/>
+        <p> formalmente hablando </p>
+        <code> 
+         S :: = mostrar cuadrado color1  
+              | y adentro (mostrar cuadrado color2)
+        </code>
         <p> luego de escribir el programa, apretar enter para ejecutarlo</p>
         <div class="input">
           {
@@ -25,79 +34,16 @@
         =
         <canvas id="canvas" width=1000 height=1000></canvas>
         <script>
-            //language functions and specs
-            let shapes = ["cuadrado"];
-            let positions = ["adentro de"];
-            let colors = ["red", "blue"];
-            let positionModif = 0;
-            function mostrar(str, shape, color) {
-                console.log("executing:>> mostrar("+str+")")
-                console.log(str)
-                let result = document.getElementById("result");
-                result.innerHTML += "<div>"+str+"</div>";
-                let canvas = document.getElementById("canvas")
-                let ctx = canvas.getContext("2d");
-                ctx.beginPath();
-
-                ctx.globalAlpha = 0.5
-                ctx.fillStyle=color;
-                ctx.fillRect(20,20,150-positionModif,100-positionModif);
-                //ctx.stroke();
-
-            }
-            function concatenar(s1,args1, s2, args2){
-                s1(args1);s2(args2)
-            }
-
-            //execute a program
-            function execute(program){
-                let sentences = program.split(";");
-                for (const idx in sentences){
-                    // syntax:
-                    // S :: = mostrar cuadrado color1  
-                    //      | adentro de (mostrar cuadrado color2 )
-                    let sentence = sentences[idx];
-                    //adentro de (mostrar cuadrado color 2)
-                    if (sentence.includes("adentro de(")) {
-                        console.log("adentro de");
-                        let innerSentence = sentence.split("(")[1].replace(")","");
-                        let tokens = innerSentence.split(" ") 
-                        positionModif += 10;
-                        mostrar(sentence, tokens[1],tokens[2]);
-
-                    }
-                    // mostrar cuadrado color1
-                    else if (sentence.includes("mostrar")) {
-                        let tokens = sentence.split(" ");
-                        positionModif = 0;
-                        mostrar(sentence, tokens[1], tokens[2]);
-                    }
-                    // all sentences not in lang
-                    else {
-                        console.log("ERROR: ORACION NO EN EL LENGUAJE");
-                        console.log(sentence);
-                    }
+            function loadScript(url)
+                {    
+                    var head = document.getElementsByTagName('head')[0];
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = url;
+                    head.appendChild(script);
                 }
-            }
-
-
-            //editor
-            //support enter to execute
-            document.getElementById("exec")
-                        .addEventListener("keyup", function(event) {
-                        event.preventDefault();
-                        if (event.keyCode === 13) {
-                            document.getElementById("myButton").click();
-                        }
-                    });
-            function buttonCode()
-            {
-                let program = document.getElementById("exec").value;
-                let data = {element: program};
-                //mostrar(program);
-                execute(program);
-            }
-            //concatenar(mostrar,"hola",mostrar,"chau")
-        </script>
+            loadScript("drawLang.js");
+            loadScript("editor.js");
+        </script
     </body>
 </html>
