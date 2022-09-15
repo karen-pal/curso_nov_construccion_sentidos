@@ -1,0 +1,103 @@
+<!doctype html>
+	<head>
+		<style>
+			/* CSS comes here */
+			body {
+			    font-family: arial;
+			}
+			button {
+			    padding:10px;
+			    background-color:#6a67ce;
+			    color: #FFFFFF;
+			    border: 0px;
+			    cursor:pointer;
+			    border-radius: 5px;
+			}
+			#output {
+			    background-color:#F9F9F9;
+			    padding:10px;
+			    width: 100%;
+			    margin-top:20px;
+			    line-height:30px;
+			}
+			.hide {
+			    display:none;
+			}
+			.show {
+			    display:block;
+			}
+		</style>
+		<title>JavaScript Speech to Text</title>
+	</head>
+	<body>
+		<h2>JavaScript Speech to Text</h2>
+        <p>Click on the below button and speak something...</p>
+        <p><button type="button" onclick="runSpeechRecognition()">Speech to Text</button> &nbsp; <span id="action"></span></p>
+        <div id="output" class="hide"></div>
+        <canvas id="circulo" width=1000 height=800></canvas>
+		<script>
+			/* JS comes here */
+            let canvas = document.getElementById("circulo")
+            let ctx = canvas.getContext("2d")
+            let drawVar = 10;
+            function draw() {
+                ctx.fillStyle = "rgba(20,10,20,.1)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height); 
+                ctx.beginPath();
+                ctx.lineWidth = 10;
+                ctx.strokeStyle= "rgba(255,"+ drawVar.toString()+", 0,1)"; //(R,G,B,A)
+                ctx.ellipse(canvas.width/2 + drawVar*10, canvas.height/2, 100+drawVar*10, 100+drawVar*10, 0, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+            setInterval(draw,100);
+		        // get output div reference
+		        var output = document.getElementById("output");
+		        // get action element reference
+		        var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+                var i = 0;
+                recognition.lang = 'es-US'; //'en-US';
+                recognition.continuous = 'true'; //'en-US';
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>listening, please speak...</small>";
+                };
+                
+                recognition.onspeechend = function() {
+                    console.log("DEJE DE ESCUCHAR")
+                    //action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                    //recognition.stop();
+                }
+                recognition.onend = function() {
+                      recognition.start();
+
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    console.log(event.results);
+                    var transcript = event.results[i][0].transcript;
+                    var confidence = event.results[i][0].confidence;
+                    if (transcript.includes("hablar")){
+                        drawVar = drawVar + 10;
+                    }
+
+                    if (transcript.includes("silencio")){
+                        drawVar = drawVar-10;
+                        document.body.style.background = "white";
+                    }
+                    if (transcript.includes("vacío")){
+                        document.body.style.background = "black";
+                    }
+                    output.innerHTML += "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"% </br>";
+                    output.classList.remove("hide");
+                    i++;
+                };
+              
+               recognition.start()
+		</script>
+	</body>
+</html>
