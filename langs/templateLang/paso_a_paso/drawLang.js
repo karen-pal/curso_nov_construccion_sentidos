@@ -47,7 +47,8 @@ function pulse(sentence,shape,color){
     }
     draw(color, 1)
 }
-//execute a program
+
+//what executing a program means
 function execute(program){
     let sentences = program.split(";");
     let interval;

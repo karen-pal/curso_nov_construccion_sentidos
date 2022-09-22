@@ -8,22 +8,6 @@
     <body>
         <h1> Lenguaje simple</h1>
 
-        <p id="content">Este lenguaje puede dibujar usando la sintaxis</p>
-        <code>mostrar cuadrado cssColor</code>
-        <br/>
-        <p> o alternativamente, anidar dibujos usando la sintaxis </p>
-        <code>y adentro (mostrar cuadrado cssColor)</code>
-        <br/>
-        <p> o alternativamente, mover y cambiar dimensiones del cuadrado usando la sintaxis </p>
-        <code>mover x1 y1 x2 y2</code>
-        <br/>
-        <p> formalmente hablando </p>
-        <code> 
-         S :: = mostrar cuadrado color1  
-              | y adentro (mostrar cuadrado color2)
-              | mover x1 y1 x2 y2
-        </code>
-        <p> luego de escribir el programa, apretar enter para ejecutarlo</p>
         <div class="input">
           {
             <label class="custom-field" >
@@ -46,7 +30,7 @@
                     script.src = url;
                     head.appendChild(script);
                 }
-            loadScript("drawLang.js");
+            loadScript("trivialLang.js");
             loadScript("editor.js");
         </script
     </body>
