@@ -43,7 +43,7 @@
                           r = verso.lenSust;
                           g = verso.lenPrep;
                           b = verso.len;
-                          color = "rgba("+(r*10).toString()+","+(g*30).toString()+","+(b).toString()+",.5)";
+                          color = "rgba("+(r*40).toString()+","+(g*30).toString()+","+(b*10).toString()+",.5)";
                         }
                         var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
                         gradient.addColorStop(0, "white");

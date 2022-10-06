@@ -6,9 +6,12 @@
 * cors
 
 # Generar gramática
-`nearley-test -i "como gotas de rocío#sobre una hoja de loto#desaparezco" poem.js`
 
 `nearleyc poema.ne -o poem.js`
+
+## testear en la consola
+
+`nearley-test -i "como gotas de rocío#sobre una hoja de loto#desaparezco" poem.js`
 
 # Uso
 levantar el server
