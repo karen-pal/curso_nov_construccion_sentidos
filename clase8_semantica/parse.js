@@ -1,5 +1,5 @@
 const nearley = require("nearley");
-const grammar = require("./poem.js");
+const grammar = require("./poem.js"); //  <---- gramática generada con nearly! para modificar, modificar poema.ne y seguir instrucciones del readme!
 const fs = require('fs')
 const path = require('path')
 
