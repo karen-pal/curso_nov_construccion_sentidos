@@ -5,6 +5,8 @@ inspirado en la neblina y en la pintura taoista.
 
 Pensado para servirles como inicio de lenguajes custom de interconexión
 
+https://karen-pal.github.io/curso_construcci-n_sentidos/clase8_semantica/desaparezco.html
+
 # Prereq
 * node
 * npm
