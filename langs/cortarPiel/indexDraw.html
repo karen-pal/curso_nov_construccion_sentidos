@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <style>
+            html {background:grey; color:white; 
+            }
+            button {display:none};
+            body {position:relative}
+            code {
+                z-index: 1;
+              position: fixed;
+              left: 0;
+              right: 0;
+              bottom:0;
+          }
+            input {font-size:100px}
+
+        </style>
+    </head>
+    <body>
+        <div class="input" style="display:none">
+          {
+            <label class="custom-field" >
+          <input type="text" id="exec" size="100">
+            <button id="myButton" onclick="buttonCode()">Submit</button>
+            </label>
+          }
+      </div>
+        <code> <div id="result"></div></code>
+        <canvas id="canvas" width=1920 height=1080></canvas>
+        <script>
+            function loadScript(url)
+                {    
+                    var head = document.getElementsByTagName('head')[0];
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = url;
+                    head.appendChild(script);
+                }
+            loadScript("drawLang.js");
+            loadScript("editor.js");
+        </script
+    </body>
+</html>
