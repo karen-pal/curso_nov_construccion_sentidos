@@ -5,33 +5,34 @@
     <body>
         <button id="start">start</button>
         <button id="stop">stop</button>
-        <canvas id="circulo" width=800 height=800></canvas>
+        <canvas id="circulo" width=1000 height=1000></canvas>
         <script>
-            let note;
+            let interval;
+            let value=0;
+            let value2=.3;
             let canvas = document.getElementById("circulo")
             let ctx = canvas.getContext("2d")
-            let interval;
-            let i = 1; // <---------
-            function draw() {
-                ctx.fillStyle = "rgba(20,10,20,.1)";
+            function draw(){
+                ctx.fillStyle = "rgba(20,10,20,"+value2+")";
                 ctx.fillRect(0, 0, canvas.width, canvas.height); 
                 ctx.beginPath();
                 ctx.lineWidth = 10;
-                ctx.strokeStyle= "rgba(255, 0, 0,1)";
-                ctx.ellipse(400, 400, i*10+50, i*10+50, 0, 0, 2 * Math.PI);// <---------
+                ctx.strokeStyle= "rgba(255,"+(value*20).toString() +", 0,1)";
+                console.log(value2);
+                ctx.ellipse(canvas.width/2, canvas.height/2, 100+value*10, 100+value*10, 0, 0, 2 * Math.PI);
                 ctx.stroke();
-
-                let newValue = "D"+i.toString();// <---------
+                let newValue = "D"+value.toString();// <---------
                 osc.frequency.rampTo(newValue,.4);
                 osc.phase = 100;
-
-                console.log("starting with ", newValue);
+                value = (value + 1)%10;
                 osc.start();
-                i = (i+1) % 10;
             }
+            //obtener el valor que está contenido en el slider
+            // relacionar ese valor a algunos valores dentro del dibujado
             const osc = new Tone.Oscillator("D4").toDestination();//.start().toDestination();
             document.getElementById('start')?.addEventListener('click', async () => {interval = setInterval(draw,100);} )
             document.getElementById('stop')?.addEventListener('click', async () => {osc.stop(0); clearInterval(interval);} )
+            
         </script>
     </body>
 </html>

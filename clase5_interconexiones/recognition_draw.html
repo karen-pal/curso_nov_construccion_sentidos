@@ -49,7 +49,7 @@
                 ctx.ellipse(canvas.width/2 + drawVar*10, canvas.height/2, 100+drawVar*10, 100+drawVar*10, 0, 0, 2 * Math.PI);
                 ctx.stroke();
             }
-            setInterval(draw,100);
+            //setInterval(draw,100);
 		        // get output div reference
 		        var output = document.getElementById("output");
 		        // get action element reference
@@ -95,6 +95,7 @@
                     output.innerHTML += "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"% </br>";
                     output.classList.remove("hide");
                     i++;
+                    draw();
                 };
               
                recognition.start()

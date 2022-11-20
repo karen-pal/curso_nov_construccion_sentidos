@@ -1,34 +1,30 @@
 <html>
     <head>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.37/Tone.js" integrity="sha512-gK8OnTXn8cTYkHqYX+bhzjQ1rClAPuG2eMy+oRuV26mSuE0EbZeULFKdyc/YGX1Z/JsC06FXxQttdX4aahjSMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
         <button id="start">start</button>
         <button id="stop">stop</button>
-        <canvas id="circulo" width=800 height=800></canvas>
+        <canvas id="circulo" width=1000 height=1000></canvas>
         <script>
-            let note;
-            let canvas = document.getElementById("circulo")
-            let ctx = canvas.getContext("2d")
-            let interval;
-            let i = 1; // <---------
-            function draw() {
+        let i = 0;
+        let canvas = document.getElementById("circulo")
+        let ctx = canvas.getContext("2d")
+        function draw() {
                 ctx.fillStyle = "rgba(20,10,20,.1)";
                 ctx.fillRect(0, 0, canvas.width, canvas.height); 
-                ctx.beginPath();
-                ctx.lineWidth = 10;
-                ctx.strokeStyle= "rgba(255, 0, 0,1)";
-                ctx.ellipse(400, 400, i*10+50, i*10+50, 0, 0, 2 * Math.PI);// <---------
-                ctx.stroke();
-
+            ctx.beginPath();
+            ctx.lineWidth = 10;
+            ctx.strokeStyle= "rgba(255, 0, 0,1)";
+            ctx.ellipse(canvas.width/2 + i*10, canvas.height/2, 100+i*10, 100+i*10, 0, 0, 2 * Math.PI);
+            ctx.stroke();
                 let newValue = "D"+i.toString();// <---------
                 osc.frequency.rampTo(newValue,.4);
                 osc.phase = 100;
-
-                console.log("starting with ", newValue);
-                osc.start();
-                i = (i+1) % 10;
-            }
+            osc.start();
+            i=(i+1)%10;
+        }
             const osc = new Tone.Oscillator("D4").toDestination();//.start().toDestination();
             document.getElementById('start')?.addEventListener('click', async () => {interval = setInterval(draw,100);} )
             document.getElementById('stop')?.addEventListener('click', async () => {osc.stop(0); clearInterval(interval);} )

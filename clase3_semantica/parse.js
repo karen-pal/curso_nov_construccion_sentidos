@@ -5,14 +5,17 @@ const path = require('path')
 
 // Create a Parser object from our grammar.
 function parse(palabras) {
-    const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+    const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar),
+        { keepHistory: true }
+    );
 
     // Parse something!
     try {
         parser.feed(palabras); //"como gotas de rocío#sobre una hoja de loto#desaparezco"
         // parser.results is an array of possible parsings.
         const ast = parser.results[0];
-        return ast;
+        console.log(parser.table);
+        return {"result":ast, "table": parser.table};
     } catch (e) {
         console.log(e);
     }
