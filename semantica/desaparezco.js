@@ -71,13 +71,13 @@ const drawPoem = (astRaw) =>
     let ast = astRaw;
     draw(canvas,ctx, canvas.width,canvas.height, ast); //interpretar un programa
 }
-const video = document.querySelector("video");
+const water = document.querySelector("img");
 
 function animate(ctx,n,endpos,startpos, tree) {
     ctx.font = "50px Helvetica";
 
 
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(water, 0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "blue";//rgba();
         var lineheight = 15;
         var lines = tree.split('\n');
