@@ -9,6 +9,7 @@ const ctx = canvas.getContext('2d');
 //const canvasN = document.getElementById("neblina");
 //const ctxN = canvas.getContext('2d');
 const white = "rgba(200,200,200,.1)";
+const fog_density = .1;
 
 const draw = function (canvas,ctx, w, h, ast) {
         var x = w/2,
@@ -54,7 +55,7 @@ const draw = function (canvas,ctx, w, h, ast) {
 }
 let i = 0;
 const neblina=(canvas,ctx, sinModif) => {
-    if (i>.2){ //densidad de la neblina
+    if (i>fog_density){ //densidad de la neblina
         i=0;
     }
     ctx.fillStyle = "rgba(200,200,200,"+ i.toString()+")";
@@ -70,10 +71,13 @@ const drawPoem = (astRaw) =>
     let ast = astRaw;
     draw(canvas,ctx, canvas.width,canvas.height, ast); //interpretar un programa
 }
+const video = document.querySelector("video");
+
 function animate(ctx,n,endpos,startpos, tree) {
     ctx.font = "50px Helvetica";
 
 
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "blue";//rgba();
         var lineheight = 15;
         var lines = tree.split('\n');

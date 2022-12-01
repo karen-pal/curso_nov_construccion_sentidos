@@ -5,118 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>senryu</title>
-    <!--link rel="stylesheet" href="style.css"--!>
-    <style>
-    body {
-        background:black;
-    }
-    .container {
-    position:relative;
-    width:100vw;
-        height: 100vh;
-    }
-    #dibujo,#ast #neblina{
-        position:absolute; top:0px; left:0px;
-    width:100vw;
-        height: 100vh;
-    }
-    #neblina {
-        z-index:1;}
-
-    #dibujo,#ast {
-        z-index:0;}
-
-    .container img {
-        max-width: 100%;
-        max-height: 100%;
-    display: block;
-    margin: 0 auto;
-    }
-    .custom-field::after {
-  content: attr(aria-label);
-}
-  .custom-field input {
-  
-    border: none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: 12px;
-  
-    left:50%;
-    border-radius: 3px;
-    position:fixed;
-    z-index:10000;
-    font-size: 20px;
-    color: white; --rgb(178, 200, 235);
-    
-    text-shadow: 1px 1px 2px black;
-  }
-  html, body {margin: 0; height: 100%; overflow: hidden}
-
-  ::placeholder {
-    color:white;
-  }
-  #exec_word {
-    background:  rgb(81, 94, 115,.2);--178, 200, 235,.5); --rgba(224,100,100, .1);
-    
-    bottom:0%;
-  }
-  #exec_tree {
-    background:rgb(81, 94, 115,.2);--178, 200, 235,.5);--rgba(224,255,232, .1);
-    top:10%;
-  }
-  img {
-    position:fixed;
-    filter: contrast(1);
-  }
-  button {
-      display:none;
-  }
-
-
-  .pulse {
-  margin:100px;
-  display: block;
-  border-radius: 50%;
-  background: rgba(178,200,235, 1);--#cca92c;
-  cursor: pointer;
-  box-shadow: 0 0 0 rgba(178,200,235, .7);
-  animation: pulse 4s infinite;
-}
-  .pulse:hover {
-    animation: none;
-  }
-  
-  @-webkit-keyframes pulse {
-    0% {
-      -webkit-box-shadow: 0 0 0 0 rgba(178,200,235, .7);
-    }
-    70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(178,200,235, 0);
-    }
-    100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(178,200,235, 0);
-    }
-  }
-  @keyframes pulse {
-    0% {
-      -moz-box-shadow: 0 0 0 0 rgba(178,200,235, .7);
-      box-shadow: 0 0 0 0 rgba(110, 128, 156 .7);
-    }
-    70% {
-        -moz-box-shadow: 0 0 0 10px rgba(178,200,235, 0);
-        box-shadow: 0 0 0 50px rgba(110, 128, 156, 0);
-    }
-    100% {
-        -moz-box-shadow: 0 0 0 0 rgba(178,200,235, 0);
-        box-shadow: 0 0 0 0 rgba(140, 158, 186, 0);
-    }
-  }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+      <video src="water.mp4" autoplay loop></video>
       <div class="canvas-container">
             <canvas width=1920 height=1080 id="dibujo"/>
 
@@ -124,7 +16,9 @@
       <div class="input">
           {
             <label class="custom-field" >
-            <input class="pulse" type="text" id="exec_tree" size="70" placeholder="{∅}">
+            <input class="pulse" type="text" id="exec_tree1" size="70" placeholder="{∅}" style="top:0%">
+            <input class="pulse" type="text" id="exec_tree2" size="70" placeholder="{∅}" style="top:20%">
+            <input class="pulse" type="text" id="exec_tree3" size="70" placeholder="{∅}" style="top:40%">
             <button id="myButton" onclick="buttonCodeTree()">Submit</button>
             </label>
           }
@@ -132,5 +26,6 @@
 
     <script src="./desaparezco.js"></script>
     <script src="./editor.js"></script>
+    <script type="module" src="http://localhost:8000/main.mjs" async defer></script>
   </body>
 </html>

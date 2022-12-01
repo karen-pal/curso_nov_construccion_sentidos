@@ -26,24 +26,36 @@ Luego de escribir sus gramáticas, para generar un parser usen el comando
 `nearley-test -i "como gotas de rocío#sobre una hoja de loto#desaparezco" poem.js`
 
 # Uso de senryu
-levantar el server
+levantar el language server
 
 node server.js
 
+levantar el file server
+
+python3 cors_server.py
+
 abrir desaparezco.html en un navegador.
 
-introducir un poema. 
+introducir un poema, verso por verso. 
 
->Versos separados por numerales. Ver ejemplos
 
 # Ejemplos
-florece#florece#florece
+florece florece florece
 
 
-florece#como una hoja de loto#florece
+florece como una hoja de loto florece
 
 
-florece#como una hoja de loto#desaparezco
+florece como una hoja de loto desaparezco
 
 
-como gotas de rocio#desaparezco#sobre el arbol muerto
+como gotas de rocio desaparezco sobre el arbol muerto
+
+> Leer poema.ne para ver el vocabulario disponible.
+> Para modificar senryu, modificar poema.ne y correr el comando para generar el parser nuevamente.
+
+#Autocompletado
+Adaptado de fuentes:
+- https://www.lucaspaganini.com/academy/autocomplete-with-fuzzy-search-and-fuse-js
+- https://github.com/LucasPaganini/published-content/tree/master/autocomplete-fuzzy-search
+
