@@ -26,18 +26,19 @@ En general se van a encontrar con distintos archivos html y js. Abrir el archivo
 Para modificar el comportamiento de un programa, hay que modificar el texto del cuerpo del archivo html o javascript correspondiente. Esto se puede hacer abriendo el archivo en un editor de texto cualquiera. Te recomiendo [VS Code](https://code.visualstudio.com/), un editor de texto especializado en escribir programas, y que es bastante usado. Me vas a ver que yo uso vim para las clases, pero no es importante/necesario usar este editor.
 
 # Lista de demos online
+- [Lenguaje simple: implementación naive de un compilador de un lenguaje para dibujado](https://karen-pal.github.io/curso_nov_construccion_sentidos/lenguajes/indexDraw.html)
+<img src="simple.png">
+- [Cortar piel: exploracion poetica a partir del lenguaje simple](https://karen-pal.github.io/curso_nov_construccion_sentidos/lenguajes/cortarPiel/indexDraw.html)
 
-## Clase 2
-- [Uso básico de canvas](https://karen-pal.github.io/curso_construcci-n_sentidos/clase2_texto-dibujo/canvas_simple.html)
-- [Interacción con el click](https://karen-pal.github.io/curso_construcci-n_sentidos/clase2_texto-dibujo/test.html)
-- [Animación con canvas, búsqueda de organicidad en el resultado visual](https://karen-pal.github.io/curso_construcci-n_sentidos/clase2_texto-dibujo/canvas_ad.html)
-## Clase 3
-- [Tocar una nota con ToneJS](https://karen-pal.github.io/curso_construcci-n_sentidos/clase3_texto-sonido/tocar_un_sonido.html)
+<img src="cortar.png">
+- [Lenguaje de programación Senryu : nearleyjs con semántica, para la interacción con animaciones.](https://karen-pal.github.io/curso_nov_construccion_sentidos/semantica/desaparezco.html)
+<img src="senryu_complex.png">
+
+## Otros links ùtiles
+### Sonoros
 - [Paso a paso: desde importar ToneJS hasta usar filtros](https://karen-pal.github.io/curso_construcci-n_sentidos/clase3_texto-sonido/paso_a_paso/)
-## Clase 4
 - [Dibujo+síntesis de sonido con ToneJS](https://karen-pal.github.io/curso_construcci-n_sentidos/clase4_texto-sonido-imagen/sorpr.html)
 
-## Clase 5
 ### Dibujo con canvas
 - [Flor simple parametrizada](https://karen-pal.github.io/curso_construcci-n_sentidos/clase5_interconexiones/flor_simple.html)
 - [Flor parametrizada + animada](https://karen-pal.github.io/curso_construcci-n_sentidos/clase5_interconexiones/flor.html)
@@ -50,10 +51,4 @@ Para modificar el comportamiento de un programa, hay que modificar el texto del 
 - [Uso básico de la API nativa de chrome de reconocimiento de habla automático](https://karen-pal.github.io/curso_construcci-n_sentidos/clase5_interconexiones/recognition.html)
 - [Automatizar uso de la API de reconocimiento de habla](https://karen-pal.github.io/curso_construcci-n_sentidos/clase5_interconexiones/recognition_automatica.html)
 - [Sistema para dibujar guiado con la voz: reconocimiento de habla automático usando API nativa de chrome](https://karen-pal.github.io/curso_construcci-n_sentidos/clase5_interconexiones/recognition_draw.html)
-
-## Clase 6
-- [Lenguaje para dibujar, programado interpretando de forma naive la anatomía de un compilador](https://karen-pal.github.io/curso_construcci-n_sentidos/langs/indexDraw.html)
-
-## Clase 8
-- [Lenguaje Senryu: lenguaje poético para interactuar con animaciones. Técnicamente convencional, formal](https://karen-pal.github.io/curso_construcci-n_sentidos/clase8_semantica/desaparezco.html)
 
